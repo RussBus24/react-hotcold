@@ -9,4 +9,4 @@ var Game = React.createClass({
         
     }
     
-})
+});
