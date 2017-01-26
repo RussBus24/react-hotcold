@@ -9,13 +9,26 @@ var Game = React.createClass({
     render: function() {
         
         return (
-        <div className="game">
-            <h1>HOT and COLD</h1>
+        <div>
+        <header>
+			<nav> 
+				<ul className="clearfix">
+					<li><a className="what" href="#">What ?</a></li>
+					<li><a className="new" href="#">+ New Game</a></li>
+				</ul>
+			</nav>
+		</header>
             <Board />
         </div>
         );
     }
-    
 });
 
+var mapDispatchToProps = function(dispatch) {
+    
+};
+
+var Container = connect(mapDispatchToProps)(Game);
+
 module.exports = Game;
+module.exports = Container;
