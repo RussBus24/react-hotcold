@@ -5,6 +5,7 @@ var actions = require('../actions/index');
 var Game = require('./game');
 var GuessCount = require('./guess-count');
 var GuessList = require('./guess-list');
+var Feedback = require('./feedback');
 
 var Board = React.createClass({
     
@@ -14,21 +15,23 @@ var Board = React.createClass({
     },
     
     handleSubmit(event) {
-        var guess = event.target.guessInput.value;
+        event.preventDefault();
+        var g = event.target.userGuess.value;
         
-        if (this.props.guessArray.includes(guess)) {
-            this.props.guessFeedback("You already guessed that!");
+        if (this.props.guesses.includes(g)) {
+            console.log(this.props.feedback('You already guessed that!'));
             return;
         }
-
+        //this.props.dispatch(actions.guessNumber(guess));
+        this.props.guess(g);
     },
     
-    render: function() {
+    render: function(props) {
         
         return (
         <section className="game">
 			
-			<h2 id="feedback">Make your Guess!</h2>
+			<Feedback />
 
 			<form onSubmit={this.handleSubmit}>
 				<input type="text" name="userGuess" ref="userGuess" className="text" maxLength="3" autoComplete="off" placeholder="Enter your Guess" required />
@@ -49,15 +52,18 @@ var mapStateToProps = function(state, props) {
     return {
         random: state.randomNumber,
         guesses: state.guessArray,
-        user: state.userNumber
+        user: state.userNumber,
+        feedback: state.guessFeedback
     };
 };
 
 var mapDispatchToProps = function(dispatch) {
-    
+    return {
+        guess: function(guess){dispatch(actions.guessNumber(guess))},
+        feedback: function(feedback){dispatch(actions.guessFeedback(feedback))}
+    };
 };
 
 var Container = connect(mapStateToProps, mapDispatchToProps)(Board);
 
 module.exports = Container;
-module.exports = Board;

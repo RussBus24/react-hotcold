@@ -24,11 +24,8 @@ var Game = React.createClass({
     }
 });
 
-var mapDispatchToProps = function(dispatch) {
-    
-};
 
-var Container = connect(mapDispatchToProps)(Game);
+var Container = connect()(Game);
 
 module.exports = Game;
 module.exports = Container;

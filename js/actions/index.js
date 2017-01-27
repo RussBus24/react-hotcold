@@ -36,6 +36,14 @@ var validateNumber = function(number) {
     };
 };
 
+var GUESS_FEEDBACK = 'GUESS_FEEDBACK';
+var guessFeedback = function(feedback) {
+    return {
+        type: GUESS_FEEDBACK,
+        feedback: feedback
+    };
+};
+
 exports.INPUT_NUMBER = INPUT_NUMBER;
 exports.inputNumber = inputNumber;
 exports.GUESS_NUMBER = GUESS_NUMBER;
@@ -44,3 +52,5 @@ exports.NEW_RANDOM_NUMBER = NEW_RANDOM_NUMBER;
 exports.newRandomNumber = newRandomNumber;
 exports.VALIDATE_NUMBER = VALIDATE_NUMBER;
 exports.validateNumber = validateNumber;
+exports.GUESS_FEEDBACK = GUESS_FEEDBACK;
+exports.guessFeedback = guessFeedback;

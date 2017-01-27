@@ -7,15 +7,10 @@ var Board = require('./board');
 var GuessList = React.createClass({
     
     render: function(props) {
-        let guesses = this.props.guesses.map((guess) => {
-            return <li>{guess}</li>;
-        });
         
         return (
             <div>
-           <ul id="guessList" className="guessBox clearfix">
-               {guesses}
-			</ul>
+                <h2 id="feedback">{this.props.feedback}</h2>
            </div>
         );
     }
@@ -23,12 +18,10 @@ var GuessList = React.createClass({
 
 var mapStateToProps = function(state, props) {
     return {
-        guesses: state.guessArray
+        feedback: state.guessFeedback
     };
 };
 
 var Container = connect(mapStateToProps)(GuessList);
 
 module.exports = Container;
-
-//module.exports = GuessList;
