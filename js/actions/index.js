@@ -43,6 +43,11 @@ var guessFeedback = function(feedback) {
     };
 };
 
+var MODAL_VISIBLE = 'MODAL_VISIBLE';
+var modalVisible = function() {
+    type: MODAL_VISIBLE
+}
+
 var GUESS_FEEDBACK_HOT = 'GUESS_FEEDBACK_HOT';
 var guessFeedbackHot = function(feedback) {
     return {
@@ -61,6 +66,8 @@ var guessFeedbackCold = function(feedback) {
 
 exports.NEW_GAME = NEW_GAME;
 exports.newGame = newGame;
+exports.MODAL_VISIBLE = MODAL_VISIBLE;
+exports.modalVisible = modalVisible;
 exports.GUESS_NUMBER = GUESS_NUMBER;
 exports.guessNumber = guessNumber;
 exports.NEW_RANDOM_NUMBER = NEW_RANDOM_NUMBER;

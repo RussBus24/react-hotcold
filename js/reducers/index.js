@@ -4,7 +4,8 @@ var initialState = {
     randomNumber: Math.floor(Math.random() * 100) + 1,
     guessArray: [],
     userNumber: null,
-    guessFeedback: "Guess a number between 1 and 100."
+    guessFeedback: "Guess a number between 1 and 100.",
+    seeModal: false
 };
 
 var initialNumberState = [];
@@ -40,6 +41,9 @@ var numberReducer = function(state, action) {
     }
     else if (action.type === actions.GUESS_FEEDBACK_COLD) {
         return Object.assign({}, state, {guessFeedback: action.feedback});
+    }
+    else if (action.type === actions.MODAL_VISIBLE) {
+        return Object.assign({}, state, {seeModal: !state.seeModal});
     }
     
     return state;
