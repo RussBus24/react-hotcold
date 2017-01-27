@@ -44,6 +44,22 @@ var guessFeedback = function(feedback) {
     };
 };
 
+var GUESS_FEEDBACK_HOT = 'GUESS_FEEDBACK_HOT';
+var guessFeedbackHot = function(feedback) {
+    return {
+        type: GUESS_FEEDBACK_HOT,
+        feedback: feedback
+    };
+};
+
+var GUESS_FEEDBACK_COLD = 'GUESS_FEEDBACK_COLD';
+var guessFeedbackCold = function(feedback) {
+    return {
+        type: GUESS_FEEDBACK_COLD,
+        feedback: feedback
+    };
+};
+
 exports.INPUT_NUMBER = INPUT_NUMBER;
 exports.inputNumber = inputNumber;
 exports.GUESS_NUMBER = GUESS_NUMBER;
@@ -54,3 +70,7 @@ exports.VALIDATE_NUMBER = VALIDATE_NUMBER;
 exports.validateNumber = validateNumber;
 exports.GUESS_FEEDBACK = GUESS_FEEDBACK;
 exports.guessFeedback = guessFeedback;
+exports.GUESS_FEEDBACK_HOT = GUESS_FEEDBACK_HOT;
+exports.guessFeedbackHot = guessFeedbackHot;
+exports.GUESS_FEEDBACK_COLD = GUESS_FEEDBACK_COLD;
+exports.guessFeedbackCold = guessFeedbackCold;

@@ -2,9 +2,9 @@ var actions = require('../actions/index');
 
 var initialState = {
     randomNumber: Math.floor(Math.random() * 100) + 1,
-    guessArray: [0],
+    guessArray: [],
     userNumber: null,
-    guessFeedback: "Make your Guess!"
+    guessFeedback: "Guess a number between 1 and 100."
 };
 
 var initialNumberState = [];
@@ -30,6 +30,12 @@ var numberReducer = function(state, action) {
         });
     }
     else if (action.type === actions.GUESS_FEEDBACK) {
+        return Object.assign({}, state, {guessFeedback: action.feedback});
+    }
+    else if (action.type === actions.GUESS_FEEDBACK_HOT) {
+        return Object.assign({}, state, {guessFeedback: action.feedback});
+    }
+    else if (action.type === actions.GUESS_FEEDBACK_COLD) {
         return Object.assign({}, state, {guessFeedback: action.feedback});
     }
     

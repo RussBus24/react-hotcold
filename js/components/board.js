@@ -17,10 +17,32 @@ var Board = React.createClass({
     handleSubmit(event) {
         event.preventDefault();
         var g = event.target.userGuess.value;
-        
+        var difference = g - this.props.random;
+        var margin = Math.abs(difference);
         if (this.props.guesses.includes(g)) {
             console.log(this.props.feedback('You already guessed that!'));
             return;
+        }
+        else if (margin === 0) {
+            this.props.feedback('Correct! You win!!');
+        }
+        else if (margin <= 5) {
+            this.props.feedback('You are on FIRE!!!');
+        }
+        else if (margin <= 10) {
+            this.props.feedback('HOT!');
+        }
+        else if (margin <= 30) {
+            this.props.feedback('Warm...');
+        }
+        else if (margin <= 40) {
+            this.props.feedback('Cool...');
+        }
+        else if (margin <= 50) {
+            this.props.feedback('COLD!');
+        }
+        else if (margin <= 90) {
+            this.props.feedback('You are in Iceland.');
         }
         //this.props.dispatch(actions.guessNumber(guess));
         this.props.guess(g);

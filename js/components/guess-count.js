@@ -9,10 +9,21 @@ var GuessCount = React.createClass({
     render: function() {
         return (
             <div>
-           <p>Guess #<span id="count">0</span>!</p> 
+           <p>Guess #<span id="count">{this.props.guesses.length}</span>!</p> 
            </div>
         );
     }
-})
+});
 
-module.exports = GuessCount;
+var mapStateToProps = function(state, props) {
+    return {
+        random: state.randomNumber,
+        guesses: state.guessArray,
+        user: state.userNumber,
+        feedback: state.guessFeedback
+    };
+};
+
+var Container = connect(mapStateToProps)(GuessCount);
+
+module.exports = Container;
