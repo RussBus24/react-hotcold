@@ -29,6 +29,9 @@ var numberReducer = function(state, action) {
             number: action.number
         });
     }
+    else if (action.type === actions.NEW_GAME) {
+        return Object.assign({}, state, initialState, {randomNumber: Math.floor(Math.random() * 100) + 1});
+    }
     else if (action.type === actions.GUESS_FEEDBACK) {
         return Object.assign({}, state, {guessFeedback: action.feedback});
     }

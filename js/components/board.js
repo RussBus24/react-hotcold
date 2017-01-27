@@ -24,7 +24,7 @@ var Board = React.createClass({
             return;
         }
         else if (margin === 0) {
-            this.props.feedback('Correct! You win!!');
+            this.props.feedback('Correct! You win!! Click New Game to play again.');
         }
         else if (margin <= 5) {
             this.props.feedback('You are on FIRE!!!');
@@ -46,6 +46,7 @@ var Board = React.createClass({
         }
         //this.props.dispatch(actions.guessNumber(guess));
         this.props.guess(g);
+        this.refs.userGuess.value = "";
     },
     
     render: function(props) {

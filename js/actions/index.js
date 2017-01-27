@@ -4,11 +4,10 @@
 //Validate a Number and inform user appropriately (JS side)
 
 
-var INPUT_NUMBER = 'INPUT_NUMBER';
-var inputNumber = function(number) {
+var NEW_GAME = 'NEW_GAME';
+var newGame = function() {
     return {
-        type: INPUT_NUMBER,
-        number: number
+        type: NEW_GAME
     };
 };
 
@@ -60,8 +59,8 @@ var guessFeedbackCold = function(feedback) {
     };
 };
 
-exports.INPUT_NUMBER = INPUT_NUMBER;
-exports.inputNumber = inputNumber;
+exports.NEW_GAME = NEW_GAME;
+exports.newGame = newGame;
 exports.GUESS_NUMBER = GUESS_NUMBER;
 exports.guessNumber = guessNumber;
 exports.NEW_RANDOM_NUMBER = NEW_RANDOM_NUMBER;

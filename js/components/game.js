@@ -14,9 +14,10 @@ var Game = React.createClass({
 			<nav> 
 				<ul className="clearfix">
 					<li><a className="what" href="#">What ?</a></li>
-					<li><a className="new" href="#">+ New Game</a></li>
+					<li><a className="new" href="#" onClick={this.props.newGame}>+ New Game</a></li>
 				</ul>
 			</nav>
+			<h1>HOT and COLD</h1>
 		</header>
             <Board />
         </div>
@@ -24,8 +25,12 @@ var Game = React.createClass({
     }
 });
 
+var mapDispatchToProps = function(dispatch) {
+    return {
+        newGame: function(newGame){dispatch(actions.newGame())}
+    };
+};
 
-var Container = connect()(Game);
+var Container = connect(null, mapDispatchToProps)(Game);
 
-module.exports = Game;
 module.exports = Container;
