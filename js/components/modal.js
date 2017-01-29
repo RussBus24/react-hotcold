@@ -9,8 +9,8 @@ var Modal = React.createClass({
     
     render: function() {
         return (
-            <div class="overlay" id="modal">
-				<div class="content">
+            <div className="overlay" id="modal">
+				<div className="content">
 					<h3>What do I do?</h3>
 					<div>
 						<p>This is a Hot or Cold Number Guessing Game. The game goes like this: </p>
@@ -20,7 +20,7 @@ var Modal = React.createClass({
 							<li>3. You will <strong>get feedback</strong> on how close ("hot") or far ("cold") your guess is.</li>
 						</ul>
 						<p>So, Are you ready?</p>
-						<a class="close" href="#">Got It!</a>
+						<a className="close" href="#" onClick={this.props.close}>Got It!</a>
 					</div>
 				</div>
 			</div>

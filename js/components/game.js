@@ -7,6 +7,11 @@ var Modal = require('./modal');
 
 var Game = React.createClass({
     
+    toggleModal: function(e) {
+      e.preventDefault();
+      this.props.seeModal();
+    },
+    
     render: function() {
         
         return (
@@ -14,13 +19,14 @@ var Game = React.createClass({
         <header>
 			<nav> 
 				<ul className="clearfix">
-					<li><a className="what" href="#" onClick={this.props.seeModal}>What ?</a></li>
+					<li><a className="what" href="#" onClick={this.toggleModal}>What ?</a></li>
 					<li><a className="new" href="#" onClick={this.props.newGame}>+ New Game</a></li>
 				</ul>
 			</nav>
 			<h1>HOT and COLD</h1>
 		</header>
             <Board />
+            {this.props.modal?<Modal close={this.toggleModal}/>:''}
         </div>
         );
     }
@@ -35,7 +41,7 @@ var mapStateToProps = function(state) {
 var mapDispatchToProps = function(dispatch) {
     return {
         newGame: function(newGame){dispatch(actions.newGame())},
-        seeModal: function(seeModal){dispatch(actions.modalVisible())}
+        seeModal: function(){dispatch(actions.modalVisible())}
     };
 };
 
