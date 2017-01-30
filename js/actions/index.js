@@ -51,6 +51,14 @@ var modalVisible = function(visible) {
     };
 };
 
+var UPDATE_FEWEST_GUESSES = 'UPDATE_FEWEST_GUESSES';
+var updateFewestGuesses = function(fewest) {
+    return {
+        type: UPDATE_FEWEST_GUESSES,
+        fewest: fewest
+    };
+};
+
 var FETCH_GUESSES_SUCCESS = 'FETCH_GUESSES_SUCCESS';
 var fetchGuessesSuccess = function(fewest) {
     return {
@@ -90,7 +98,7 @@ var retrieveFewestGuesses = function(guesses) {
         })
         .catch(function (error) {
             return dispatch(
-            fetchGuessesError(error)
+                fetchGuessesError(error)
             );
         });
     };
@@ -136,3 +144,5 @@ exports.FETCH_GUESSES_SUCCESS = FETCH_GUESSES_SUCCESS;
 exports.fetchGuessesSuccess = fetchGuessesSuccess;
 exports.FETCH_GUESSES_ERROR = FETCH_GUESSES_ERROR;
 exports.fetchGuessesError = fetchGuessesError;
+exports.UPDATE_FEWEST_GUESSES = UPDATE_FEWEST_GUESSES;
+exports.updateFewestGuesses = updateFewestGuesses;

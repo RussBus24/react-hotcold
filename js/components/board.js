@@ -24,7 +24,9 @@ var Board = React.createClass({
             return;
         }
         else if (margin === 0) {
+            var numOfGuesses = this.props.guesses.length + 1;
             this.props.feedback('Correct! You win!! Click New Game to play again.');
+            this.props.fewestGuess.push(numOfGuesses);
         }
         else if (margin <= 5) {
             this.props.feedback('You are on FIRE!!!');
@@ -76,7 +78,8 @@ var mapStateToProps = function(state, props) {
         random: state.randomNumber,
         guesses: state.guessArray,
         user: state.userNumber,
-        feedback: state.guessFeedback
+        feedback: state.guessFeedback,
+        fewestGuess: state.fewestGuess
     };
 };
 

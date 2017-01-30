@@ -27,6 +27,7 @@ var Game = React.createClass({
 		</header>
             <Board />
             {this.props.modal?<Modal close={this.toggleModal}/>:''}
+            <p>Current fewest number of guesses: 0</p>
         </div>
         );
     }
@@ -34,7 +35,8 @@ var Game = React.createClass({
 
 var mapStateToProps = function(state) {
     return {
-        modal: state.seeModal
+        modal: state.seeModal,
+        fewest: state.fewest
     };
 };
 

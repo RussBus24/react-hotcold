@@ -30,5 +30,3 @@ var mapStateToProps = function(state, props) {
 var Container = connect(mapStateToProps)(GuessList);
 
 module.exports = Container;
-
-//module.exports = GuessList;

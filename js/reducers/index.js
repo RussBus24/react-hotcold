@@ -6,7 +6,7 @@ var initialState = {
     userNumber: null,
     guessFeedback: "Guess a number between 1 and 100.",
     seeModal: false,
-    fewestGuess: null
+    fewestGuess: []
 };
 
 var numberReducer = function(state, action) {
