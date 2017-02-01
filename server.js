@@ -13,17 +13,39 @@ var createStorage = function() {
 
 var storage = createStorage();
 
+var FewestGuesses = require('./models/fewest-guesses');
+
 app.get('/fewest-guesses', function(request, response) {
-    response.json({fewest: fewest});
+    FewestGuesses.find(function(err, fewestguesses) {
+        if (err) {
+            return response.status(500).json({
+                message: 'A server error occured.'
+            });
+        }
+    response.json(fewestguesses);
+    });
 });
 
-app.post('/fewest-guesses', jsonParser, function(request, response) {
-    if (!('name' in request.body)) {
-        return response.sendStatus(400);
-    }
+app.post('/fewest-guesses', function(request, response) {
+    FewestGuesses.update(function(err, fewestguesses) {
+        if (err) {
+            return response.status(500).json({
+                message: 'A server error occurred.'
+            });
+        }
+        response.json(fewestguesses);
+    });
+});
 
-    var item = storage.add(request.body.name);
-    response.status(201).json(item);
+app.put('/fewest-guesses/:number', function(request, response) {
+    FewestGuesses.update({guesses: request.params.number}, function(err, fewestguesses) {
+        if (err) {
+            return response.status(500).json({
+                message: 'A server error occurred.'
+            });
+        }
+        response.json(fewestguesses);
+    });
 });
 
 app.listen(process.env.PORT || 8080, process.env.IP);

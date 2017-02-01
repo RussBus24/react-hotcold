@@ -6,7 +6,7 @@ var initialState = {
     userNumber: null,
     guessFeedback: "Guess a number between 1 and 100.",
     seeModal: false,
-    fewestGuess: []
+    fewestGuess: 100
 };
 
 var numberReducer = function(state, action) {
@@ -30,13 +30,17 @@ var numberReducer = function(state, action) {
         });
     }
     else if (action.type === actions.NEW_GAME) {
-        return Object.assign({}, state, initialState, {randomNumber: Math.floor(Math.random() * 100) + 1});
+        var storeFewestGuess = state.fewestGuess;
+        return Object.assign({}, state, initialState, {randomNumber: Math.floor(Math.random() * 100) + 1, fewestGuess: storeFewestGuess});
     }
     else if (action.type === actions.GUESS_FEEDBACK) {
         return Object.assign({}, state, {guessFeedback: action.feedback});
     }
     else if (action.type === actions.MODAL_VISIBLE) {
         return Object.assign({}, state, {seeModal: !state.seeModal});
+    }
+    else if (action.type === actions.UPDATE_FEWEST_GUESSES) {
+        return Object.assign({}, state, {fewestGuess: action.fewest});
     }
     
     return state;

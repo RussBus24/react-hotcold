@@ -26,7 +26,9 @@ var Board = React.createClass({
         else if (margin === 0) {
             var numOfGuesses = this.props.guesses.length + 1;
             this.props.feedback('Correct! You win!! Click New Game to play again.');
-            this.props.fewestGuess.push(numOfGuesses);
+            if (numOfGuesses < this.props.fewestGuesses) {
+                this.props.fewestGuess(numOfGuesses);
+            }
         }
         else if (margin <= 5) {
             this.props.feedback('You are on FIRE!!!');
@@ -67,6 +69,7 @@ var Board = React.createClass({
 			
 			<GuessList />
 
+            <p>Current fewest number of guesses: {this.props.fewestGuesses}</p>
 		</section>
         );
     }
@@ -79,14 +82,15 @@ var mapStateToProps = function(state, props) {
         guesses: state.guessArray,
         user: state.userNumber,
         feedback: state.guessFeedback,
-        fewestGuess: state.fewestGuess
+        fewestGuesses: state.fewestGuess
     };
 };
 
 var mapDispatchToProps = function(dispatch) {
     return {
         guess: function(guess){dispatch(actions.guessNumber(guess))},
-        feedback: function(feedback){dispatch(actions.guessFeedback(feedback))}
+        feedback: function(feedback){dispatch(actions.guessFeedback(feedback))},
+        fewestGuess: function(fewest){dispatch(actions.updateFewestGuesses(fewest))}
     };
 };
 
