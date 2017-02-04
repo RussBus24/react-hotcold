@@ -78,7 +78,7 @@ var fetchGuessesError = function(error) {
 var RETRIEVE_FEWEST_GUESSES = 'RETRIEVE_FEWEST_GUESSES';
 var retrieveFewestGuesses = function(guesses) {
     return function(dispatch) {
-       var url = 'https://vast-depths-38075.herokuapp.com/fewest-guesses';
+       var url = 'http://localhost:8080/fewest-guesses';
        return fetch(url).then(function(response) {
            if (response.status < 200 || response.status >= 300) {
             const error = new Error(response.statusText);
@@ -107,9 +107,9 @@ var retrieveFewestGuesses = function(guesses) {
 var POST_RETRIEVE_GUESSES = 'POST_RETRIEVE_GUESSES';
 var postRetrieveGuesses = function(guesses) {
     return function(dispatch) {
-        var url = 'https://vast-depths-38075.herokuapp.com/fewest-guesses';
+        var url = 'http://localhost:8080/fewest-guesses';
         return fetch(url, {
-          method: 'PUT',
+          method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
