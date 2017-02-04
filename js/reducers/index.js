@@ -6,7 +6,8 @@ var initialState = {
     userNumber: null,
     guessFeedback: "Guess a number between 1 and 100.",
     seeModal: false,
-    fewestGuess: 100
+    fewestGuess: 100,
+    guessid: null
 };
 
 var numberReducer = function(state, action) {
@@ -41,6 +42,9 @@ var numberReducer = function(state, action) {
     }
     else if (action.type === actions.UPDATE_FEWEST_GUESSES) {
         return Object.assign({}, state, {fewestGuess: action.fewest});
+    }
+    else if (action.type === actions.FETCH_GUESSES_SUCCESS) {
+        return Object.assign({}, state, {fewestGuess: action.fewest, guessid: action.guessid});
     }
     
     return state;

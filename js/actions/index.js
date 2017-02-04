@@ -60,10 +60,11 @@ var updateFewestGuesses = function(fewest) {
 };
 
 var FETCH_GUESSES_SUCCESS = 'FETCH_GUESSES_SUCCESS';
-var fetchGuessesSuccess = function(fewest) {
+var fetchGuessesSuccess = function(fewest, guessid) {
     return {
         type: FETCH_GUESSES_SUCCESS,
-        fewest: fewest
+        fewest: fewest,
+        guessid: guessid
     };
 };
 
@@ -76,7 +77,7 @@ var fetchGuessesError = function(error) {
 };
 
 var RETRIEVE_FEWEST_GUESSES = 'RETRIEVE_FEWEST_GUESSES';
-var retrieveFewestGuesses = function(guesses) {
+var retrieveFewestGuesses = function() {
     return function(dispatch) {
        var url = 'http://localhost:8080/fewest-guesses';
        return fetch(url).then(function(response) {
@@ -91,9 +92,15 @@ var retrieveFewestGuesses = function(guesses) {
             return response.json();
        })
        .then(function(data) {
-            var fewest = data.fewest;
+           console.log(data);
+           var fewest = Number.MAX_SAFE_INTEGER;
+           var guessid = null;
+           if (data.length > 0) {
+               fewest = data[0].guesses;
+               guessid = data[0]._id;
+           }
             return dispatch(
-                fetchGuessesSuccess(fewest)
+                fetchGuessesSuccess(fewest, guessid)
             );
         })
         .catch(function (error) {
@@ -109,7 +116,7 @@ var postRetrieveGuesses = function(guesses) {
     return function(dispatch) {
         var url = 'http://localhost:8080/fewest-guesses';
         return fetch(url, {
-          method: 'POST',
+          method: 'PUT',
           headers: {
             'Content-Type': 'application/json'
           },

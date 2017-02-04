@@ -2,10 +2,12 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var jsonParser = bodyParser.json();
+var cors = require('cors');
 
 var config = require('./config');
 
 var app = express();
+app.use(cors());
 app.use(express.static('public'));
 app.use(bodyParser.json());
 
@@ -66,8 +68,8 @@ app.post('/fewest-guesses', function(request, response) {
     });
 });
 
-app.put('/fewest-guesses/:number', function(request, response) {
-    FewestGuesses.update({guesses: request.params.number}, function(err, fewestguesses) {
+app.put('/fewest-guesses/:id', function(request, response) {
+    FewestGuesses.update({_id: request.params.id}, { $set: {guesses: request.body.number}}, function(err, fewestguesses) {
         if (err) {
             return response.status(500).json({
                 message: 'A server error occurred.'

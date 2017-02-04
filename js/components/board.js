@@ -9,6 +9,10 @@ var Feedback = require('./feedback');
 
 var Board = React.createClass({
     
+    componentDidMount: function() {
+      this.props.getFewestGuesses();  
+    },
+    
     validateNumber: function() {
         var validate = this.refs.userGuess.value;
         this.props.dispatch(actions.validateNumber(validate));
@@ -92,7 +96,8 @@ var mapDispatchToProps = function(dispatch) {
         guess: function(guess){dispatch(actions.guessNumber(guess))},
         feedback: function(feedback){dispatch(actions.guessFeedback(feedback))},
         fewestGuess: function(fewest){dispatch(actions.updateFewestGuesses(fewest))},
-        fewestGuessNumber: function(fewestguess){dispatch(actions.postRetrieveGuesses(fewestguess))}
+        fewestGuessNumber: function(fewestguess){dispatch(actions.postRetrieveGuesses(fewestguess))},
+        getFewestGuesses: function(){dispatch(actions.retrieveFewestGuesses())}
     };
 };
 
