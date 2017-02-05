@@ -78,8 +78,9 @@ var fetchGuessesError = function(error) {
 
 var RETRIEVE_FEWEST_GUESSES = 'RETRIEVE_FEWEST_GUESSES';
 var retrieveFewestGuesses = function() {
+    console.log('About to retrieve fewest guesses');
     return function(dispatch) {
-       var url = 'http://localhost:8080/fewest-guesses';
+       var url = 'https://localhost:8081/fewest-guesses';
        return fetch(url).then(function(response) {
            if (response.status < 200 || response.status >= 300) {
             const error = new Error(response.statusText);
@@ -114,7 +115,7 @@ var retrieveFewestGuesses = function() {
 var POST_RETRIEVE_GUESSES = 'POST_RETRIEVE_GUESSES';
 var postRetrieveGuesses = function(guesses) {
     return function(dispatch) {
-        var url = 'http://localhost:8080/fewest-guesses';
+        var url = 'https://localhost:8081/fewest-guesses';
         return fetch(url, {
           method: 'PUT',
           headers: {

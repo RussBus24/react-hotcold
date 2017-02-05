@@ -1,9 +1,9 @@
 var redux = require('redux');
 var createStore = redux.createStore;
-var applyMiddleWare = redux.applyMiddleWare;
+var applyMiddleware = redux.applyMiddleware;
 var thunk = require('redux-thunk').default;
 
 var reducers = require('./reducers/index');
 
-var store = createStore(reducers.numberReducer, applyMiddleWare(thunk));
+var store = createStore(reducers.numberReducer, applyMiddleware(thunk));
 module.exports  = store;
