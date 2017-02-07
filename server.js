@@ -8,7 +8,7 @@ var config = require('./config');
 
 var app = express();
 app.use(cors());
-app.use(express.static('public'));
+app.use(express.static('build'));
 app.use(bodyParser.json());
 
 var runServer = function(callback) {

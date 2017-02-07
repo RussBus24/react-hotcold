@@ -6,5 +6,5 @@ exports.DATABASE_URL = process.env.DATABASE_URL ||
                        (process.env.NODE_ENV === 'production' ?
                             'mongodb://' + dbuser + ':' + dbpass + '@dds139939.mlab.com:39939/hotcold-guesses' :
                             'mongodb://localhost/guesses-dev');
-exports.PORT = 8081;
+exports.PORT = 8080;
 //exports.PORT = process.env.PORT || 8081;
